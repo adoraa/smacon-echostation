@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Echostation Web Soundboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+  <header class="bg-white shadow p-4 text-center">
+    <h1 class="text-xl font-semibold text-gray-800">Echostation Web Soundboard</h1>
+  </header>
+
+  <main class="p-6 grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+    <!-- Sound buttons -->
+    <div onclick="playOrStop('bat1')" class="relative rounded-2xl overflow-hidden shadow-lg cursor-pointer group">
+      <img src="Bat images/Lasionycteris noctivagans.png" alt="Lasionycteris noctivagans" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" />
+      <div class="absolute inset-0 bg-black/40 flex items-end p-4">
+        <p class="text-white font-medium">Lasionycteris noctivagans</p>
+        <span id="icon-bat1" class="ml-auto text-white text-2xl">▶️</span>
+      </div>
+    </div>
+
+    <div onclick="playOrStop('bat2')" class="relative rounded-2xl overflow-hidden shadow-lg cursor-pointer group">
+      <img src="Bat images/Long-legged Myotis.png" alt="Long-legged Myotis" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" />
+      <div class="absolute inset-0 bg-black/40 flex items-end p-4">
+        <p class="text-white font-medium">Long-legged Myotis</p>
+        <span id="icon-bat2" class="ml-auto text-white text-2xl">▶️</span>
+      </div>
+    </div>
+
+    <div onclick="playOrStop('bat3')" class="relative rounded-2xl overflow-hidden shadow-lg cursor-pointer group">
+      <img src="Bat images/Nyctalus noctula.png" alt="Nyctalus noctula" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" />
+      <div class="absolute inset-0 bg-black/40 flex items-end p-4">
+        <p class="text-white font-medium">Nyctalus noctula</p>
+        <span id="icon-bat3" class="ml-auto text-white text-2xl">▶️</span>
+      </div>
+    </div>
+
+    <div onclick="playOrStop('bat4')" class="relative rounded-2xl overflow-hidden shadow-lg cursor-pointer group">
+      <img src="Bat images/Rhinolophus.png" alt="Rhinolophus" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" />
+      <div class="absolute inset-0 bg-black/40 flex items-end p-4">
+        <p class="text-white font-medium">Rhinolophus</p>
+        <span id="icon-bat4" class="ml-auto text-white text-2xl">▶️</span>
+      </div>
+    </div>
+
+    <div onclick="playOrStop('bat5')" class="relative rounded-2xl overflow-hidden shadow-lg cursor-pointer group">
+      <img src="Bat images/Pipistrellus pipistrella.png" alt="Pipistrellus pipistrella" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" />
+      <div class="absolute inset-0 bg-black/40 flex items-end p-4">
+        <p class="text-white font-medium">Pipistrellus pipistrella</p>
+        <span id="icon-bat5" class="ml-auto text-white text-2xl">▶️</span>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    let currentAudio = null;
+    let currentId = null;
+
+    function playOrStop(id) {
+      const audioSrc = id + ".mp3";
+      const icon = document.getElementById("icon-" + id);
+
+      if (currentId === id && currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+        icon.textContent = "▶️";
+        currentAudio = null;
+        currentId = null;
+        return;
+      }
+
+      if (currentAudio) {
+        const prevIcon = document.getElementById("icon-" + currentId);
+        prevIcon.textContent = "▶️";
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+      }
+
+      currentAudio = new Audio(audioSrc);
+      currentId = id;
+      icon.textContent = "⏹️";
+      currentAudio.play();
+
+      currentAudio.onended = () => {
+        icon.textContent = "▶️";
+        currentAudio = null;
+        currentId = null;
+      };
+    }
+  </script>
+</body>
+</html>
