@@ -4,68 +4,83 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Echostation Web Soundboard</title>
+  <base href="./" />
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 font-sans">
-  <header class="bg-white shadow p-4 text-center">
-    <h1 class="text-xl font-semibold text-gray-800">Echostation Web Soundboard</h1>
+  <header class="bg-white shadow p-4 flex items-center justify-center space-x-3">
+    <img src="assets/logo.svg" alt="Logo" class="h-8 w-auto" />
+    <h1 class="text-xl font-semibold text-gray-800" style="color:#e97101"> SMACON's Echostation</h1>
   </header>
 
   <main class="p-6 grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
     <!-- Sound buttons -->
     <div onclick="playOrStop('bat1')" class="relative rounded-2xl overflow-hidden shadow-lg cursor-pointer group">
-      <img src="Bat images/Lasionycteris noctivagans.png" alt="Lasionycteris noctivagans" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" />
+      <img src="assets/bat_images/Lasionycteris noctivagans.png" alt="Lasionycteris noctivagans" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" />
       <div class="absolute inset-0 bg-black/40 flex items-end p-4">
         <p class="text-white font-medium">Lasionycteris noctivagans</p>
-        <span id="icon-bat1" class="ml-auto text-white text-2xl">▶️</span>
+        <span id="icon-bat1" class="ml-auto text-white text-2xl">
+          <img src="assets/play_circle.svg" alt="play" class="h-7 w-7">
+        </span>
       </div>
     </div>
 
     <div onclick="playOrStop('bat2')" class="relative rounded-2xl overflow-hidden shadow-lg cursor-pointer group">
-      <img src="Bat images/Long-legged Myotis.png" alt="Long-legged Myotis" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" />
+      <img src="assets/bat_images/Long-legged Myotis.png" alt="Long-legged Myotis" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" />
       <div class="absolute inset-0 bg-black/40 flex items-end p-4">
         <p class="text-white font-medium">Long-legged Myotis</p>
-        <span id="icon-bat2" class="ml-auto text-white text-2xl">▶️</span>
+        <span id="icon-bat2" class="ml-auto text-white text-2xl">
+          <img src="assets/play_circle.svg" alt="play" class="h-7 w-7">
+        </span>
       </div>
     </div>
 
     <div onclick="playOrStop('bat3')" class="relative rounded-2xl overflow-hidden shadow-lg cursor-pointer group">
-      <img src="Bat images/Nyctalus noctula.png" alt="Nyctalus noctula" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" />
+      <img src="assets/bat_images/Nyctalus noctula.png" alt="Nyctalus noctula" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" />
       <div class="absolute inset-0 bg-black/40 flex items-end p-4">
         <p class="text-white font-medium">Nyctalus noctula</p>
-        <span id="icon-bat3" class="ml-auto text-white text-2xl">▶️</span>
+        <span id="icon-bat3" class="ml-auto text-white text-2xl">
+          <img src="assets/play_circle.svg" alt="play" class="h-7 w-7">
+        </span>
       </div>
     </div>
 
     <div onclick="playOrStop('bat4')" class="relative rounded-2xl overflow-hidden shadow-lg cursor-pointer group">
-      <img src="Bat images/Rhinolophus.png" alt="Rhinolophus" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" />
+      <img src="assets/bat_images/Rhinolophus.png" alt="Rhinolophus" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" />
       <div class="absolute inset-0 bg-black/40 flex items-end p-4">
         <p class="text-white font-medium">Rhinolophus</p>
-        <span id="icon-bat4" class="ml-auto text-white text-2xl">▶️</span>
+        <span id="icon-bat4" class="ml-auto text-white text-2xl">
+          <img src="assets/play_circle.svg" alt="play" class="h-7 w-7">
+        </span>
       </div>
     </div>
 
     <div onclick="playOrStop('bat5')" class="relative rounded-2xl overflow-hidden shadow-lg cursor-pointer group">
-      <img src="Bat images/Pipistrellus pipistrella.png" alt="Pipistrellus pipistrella" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" />
+      <img src="assets/bat_images/Pipistrellus pipistrella.png" alt="Pipistrellus pipistrella" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" />
       <div class="absolute inset-0 bg-black/40 flex items-end p-4">
         <p class="text-white font-medium">Pipistrellus pipistrella</p>
-        <span id="icon-bat5" class="ml-auto text-white text-2xl">▶️</span>
+        <span id="icon-bat5" class="ml-auto text-white text-2xl">
+          <img src="assets/play_circle.svg" alt="play" class="h-7 w-7">
+        </span>
       </div>
     </div>
   </main>
+
+  <footer class="text-center font-semibold">&copy SMACON 2025</footer>
 
   <script>
     let currentAudio = null;
     let currentId = null;
 
     function playOrStop(id) {
-      const audioSrc = id + ".mp3";
+      const audioSrc = `assets/mp3/${id}.mp3`;
+      console.log("Attempting to play:", audioSrc); 
       const icon = document.getElementById("icon-" + id);
 
       if (currentId === id && currentAudio) {
         currentAudio.pause();
         currentAudio.currentTime = 0;
-        icon.textContent = "▶️";
+        icon.innerHTML = '<img src="assets/play_circle.svg" alt="play" class="h-7 w-7" />';
         currentAudio = null;
         currentId = null;
         return;
@@ -73,18 +88,18 @@
 
       if (currentAudio) {
         const prevIcon = document.getElementById("icon-" + currentId);
-        prevIcon.textContent = "▶️";
+        prevIcon.innerHTML = '<img src="assets/play_circle.svg" alt="play" class="h-7 w-7" />';
         currentAudio.pause();
         currentAudio.currentTime = 0;
       }
 
       currentAudio = new Audio(audioSrc);
       currentId = id;
-      icon.textContent = "⏹️";
+      icon.innerHTML = '<img src="assets/pause_circle.svg" alt="pause" class="h-7 w-7" />';
       currentAudio.play();
 
       currentAudio.onended = () => {
-        icon.textContent = "▶️";
+        icon.innerHTML = '<img src="assets/play_circle.svg" alt="play" class="h-7 w-7" />';
         currentAudio = null;
         currentId = null;
       };
