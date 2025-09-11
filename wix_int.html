@@ -1,0 +1,70 @@
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<header class="bg-white shadow p-4 flex items-center justify-center space-x-3">
+  <img src="{{WIX_URL}}/logo.svg" alt="Logo" class="h-8 w-auto" />
+  <h1 class="text-xl font-semibold text-gray-800" style="color:#e97101"> SMACON's Echostation</h1>
+</header>
+
+<main class="p-6 grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+
+  <div onclick="playOrStop('bat1')" class="relative rounded-2xl overflow-hidden shadow-lg cursor-pointer group">
+    <img src="{{WIX_URL}}/Lasionycteris_noctivagans.png" alt="Lasionycteris noctivagans" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" />
+    <div class="absolute inset-0 bg-black/40 flex items-end p-4">
+      <p class="text-white font-medium">Lasionycteris noctivagans</p>
+      <span id="icon-bat1" class="ml-auto text-white text-2xl">
+        <img src="{{WIX_URL}}/play_circle.svg" alt="play" class="h-7 w-7">
+      </span>
+    </div>
+  </div>
+
+  <div onclick="playOrStop('bat2')" class="relative rounded-2xl overflow-hidden shadow-lg cursor-pointer group">
+    <img src="{{WIX_URL}}/Long-legged_Myotis.png" alt="Long-legged Myotis" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" />
+    <div class="absolute inset-0 bg-black/40 flex items-end p-4">
+      <p class="text-white font-medium">Long-legged Myotis</p>
+      <span id="icon-bat2" class="ml-auto text-white text-2xl">
+        <img src="{{WIX_URL}}/play_circle.svg" alt="play" class="h-7 w-7">
+      </span>
+    </div>
+  </div>
+
+</main>
+
+<footer class="text-center font-semibold">&copy; SMACON 2025</footer>
+
+<script>
+  let currentAudio = null;
+  let currentId = null;
+
+  function playOrStop(id) {
+    const audioSrc = "{{WIX_URL}}/" + id + ".mp3";
+    const icon = document.getElementById("icon-" + id);
+
+    if (currentId === id && currentAudio) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+      icon.innerHTML = '<img src="{{WIX_URL}}/play_circle.svg" alt="play" class="h-7 w-7" />';
+      currentAudio = null;
+      currentId = null;
+      return;
+    }
+
+    if (currentAudio) {
+      const prevIcon = document.getElementById("icon-" + currentId);
+      prevIcon.innerHTML = '<img src="{{WIX_URL}}/play_circle.svg" alt="play" class="h-7 w-7" />';
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+    }
+
+    currentAudio = new Audio(audioSrc);
+    currentId = id;
+    icon.innerHTML = '<img src="{{WIX_URL}}/pause_circle.svg" alt="pause" class="h-7 w-7" />';
+    currentAudio.play();
+
+    currentAudio.onended = () => {
+      icon.innerHTML = '<img src="{{WIX_URL}}/play_circle.svg" alt="play" class="h-7 w-7" />';
+      currentAudio = null;
+      currentId = null;
+    };
+  }
+</script>
