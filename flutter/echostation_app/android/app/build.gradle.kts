@@ -4,7 +4,6 @@ import java.io.FileInputStream
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
 }
 
@@ -23,14 +22,14 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.smacon.echostation" // ✅ your real app ID
+        applicationId = "com.smacon.echostation"
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
 
-    // 🔹 Load keystore from key.properties
+    // Load keystore from key.properties
     val keystorePropertiesFile = rootProject.file("key.properties")
     val keystoreProperties = Properties()
     if (keystorePropertiesFile.exists()) {
@@ -57,7 +56,6 @@ android {
             signingConfig = signingConfigs.getByName("release")
         }
         debug {
-            // Optional: you can sign debug builds with release keys too
             signingConfig = signingConfigs.getByName("release")
         }
     }
