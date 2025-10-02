@@ -1,162 +1,349 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Echostation</title>
-  <base href="./" />
-  <link rel="icon" type="image/png" href="assets/logo.svg" />
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100 font-sans">
-  <!--
-  <header class="bg-white shadow p-4 flex items-center justify-center space-x-3">
-    <img src="assets/logo.svg" alt="Logo" class="h-8 w-auto" />
-    <h1 class="text-xl font-semibold text-gray-800" style="color:#e97101"> SMACON's Echostation</h1>
-  </header>
-  -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Echostation</title>
+    <base href="./" />
+    <link rel="icon" type="image/png" href="assets/logo.svg" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
 
-  <main class="p-6 grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
-    <!-- Sound buttons -->
-    <div onclick="playOrStop('bat1')" class="relative rounded-2xl overflow-hidden shadow-lg cursor-pointer group">
-      <img src="assets/bat_images/Lasionycteris noctivagans.png" alt="Lasionycteris noctivagans" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" />
-      <div class="absolute inset-0 bg-black/40 flex items-end p-4">
-        <p class="text-white font-medium">Lasionycteris noctivagans</p>
-        <span id="icon-bat1" class="ml-auto text-white text-2xl">
-          <img src="assets/play_circle.svg" alt="play" class="h-7 w-7">
-        </span>
+  <body class="bg-gray-100 font-sans">
+    <header
+      class="bg-white shadow p-4 flex items-center justify-center space-x-3"
+    >
+      <img src="assets/logo.svg" alt="Logo" class="h-8 w-auto" />
+      <h1 class="text-xl font-semibold text-gray-800" style="color: #e97101">
+        SMACON's Echostation
+      </h1>
+    </header>
+
+    <!-- Page description -->
+    <p
+      class="max-w-4xl mx-auto mt-4 text-center text-gray-700 px-4 font-semibold"
+    >
+      Explore the unique calls of different bat species
+    </p>
+
+    <main class="p-6 grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+      <!--bat 1-->
+      <div
+        class="relative rounded-2xl overflow-hidden shadow-lg group w-full max-w-md"
+      >
+        <!-- Bat image -->
+        <img
+          src="assets/bat_images/Lasionycteris noctivagans.png"
+          alt="Lasionycteris noctivagans"
+          class="w-full h-48 object-cover group-hover:scale-125 transition-transform"
+        />
+
+        <div class="absolute inset-0 bg-black/30"></div>
+
+        <!-- Info icon top-right -->
+        <button
+          onclick="openModal('bat1', event)"
+          class="absolute top-3 right-3 p-1 rounded-full hover:bg-white/60 transition-colors"
+        >
+          <img
+            src="assets/info_icon.svg"
+            alt="info"
+            class="h-7 w-7 drop-shadow-md"
+          />
+        </button>
+
+        <!-- Card title -->
+        <div class="absolute bottom-0 w-full flex items-end p-4">
+          <p class="text-white font-semibold">Lasionycteris noctivagans</p>
+          <!-- Play button -->
+          <button
+            id="icon-bat1"
+            onclick="toggleControls('bat1', event)"
+            class="ml-auto"
+          >
+            <img
+              src="assets/play_circle.svg"
+              alt="play"
+              class="w-7 h-7 drop-shadow-xl"
+            />
+          </button>
+        </div>
+      </div>
+
+      <!--bat 2-->
+      <div
+        class="relative rounded-2xl overflow-hidden shadow-lg group w-full max-w-md"
+      >
+        <!-- Bat image -->
+        <img
+          src="assets/bat_images/Long-legged Myotis.png"
+          alt="Long-legged Myotis"
+          class="w-full h-48 object-cover group-hover:scale-125 transition-transform"
+        />
+
+        <div class="absolute inset-0 bg-black/30"></div>
+
+        <!-- Info icon top-right -->
+        <button
+          onclick="openModal('bat2', event)"
+          class="absolute top-3 right-3 p-1 rounded-full hover:bg-white/60 transition-colors"
+        >
+          <img
+            src="assets/info_icon.svg"
+            alt="info"
+            class="h-7 w-7 drop-shadow-md"
+          />
+        </button>
+
+        <!-- Card title -->
+        <div class="absolute bottom-0 w-full flex items-end p-4">
+          <p class="text-white font-semibold">Long-legged Myotis</p>
+          <!-- Play button -->
+          <button
+            id="icon-bat2"
+            onclick="toggleControls('bat2', event)"
+            class="ml-auto"
+          >
+            <img
+              src="assets/play_circle.svg"
+              alt="play"
+              class="w-7 h-7 drop-shadow-xl"
+            />
+          </button>
+        </div>
+      </div>
+
+      <!--bat 3-->
+      <div
+        class="relative rounded-2xl overflow-hidden shadow-lg group w-full max-w-md"
+      >
+        <!-- Bat image -->
+        <img
+          src="assets/bat_images/Nyctalus noctula.png"
+          alt="Nyctalus noctula"
+          class="w-full h-48 object-cover group-hover:scale-125 transition-transform"
+        />
+
+        <div class="absolute inset-0 bg-black/30"></div>
+
+        <!-- Info icon top-right -->
+        <button
+          onclick="openModal('bat3', event)"
+          class="absolute top-3 right-3 p-1 rounded-full hover:bg-white/60 transition-colors"
+        >
+          <img
+            src="assets/info_icon.svg"
+            alt="info"
+            class="h-7 w-7 drop-shadow-md"
+          />
+        </button>
+
+        <!-- Card title -->
+        <div class="absolute bottom-0 w-full flex items-end p-4">
+          <p class="text-white font-semibold">Nyctalus noctula</p>
+          <!-- Play button -->
+          <button
+            id="icon-bat3"
+            onclick="toggleControls('bat3', event)"
+            class="ml-auto"
+          >
+            <img
+              src="assets/play_circle.svg"
+              alt="play"
+              class="w-7 h-7 drop-shadow-xl"
+            />
+          </button>
+        </div>
+      </div>
+
+      <!--bat 4-->
+      <div
+        class="relative rounded-2xl overflow-hidden shadow-lg group w-full max-w-md"
+      >
+        <!-- Bat image -->
+        <img
+          src="assets/bat_images/Rhinolophus.png"
+          alt="Rhinolophus"
+          class="w-full h-48 object-cover group-hover:scale-125 transition-transform"
+        />
+
+        <div class="absolute inset-0 bg-black/30"></div>
+
+        <!-- Info icon top-right -->
+        <button
+          onclick="openModal('bat4', event)"
+          class="absolute top-3 right-3 p-1 rounded-full hover:bg-white/60 transition-colors"
+        >
+          <img
+            src="assets/info_icon.svg"
+            alt="info"
+            class="h-7 w-7 drop-shadow-md"
+          />
+        </button>
+
+        <!-- Card title -->
+        <div class="absolute bottom-0 w-full flex items-end p-4">
+          <p class="text-white font-semibold">Rhinolophus</p>
+          <!-- Play button -->
+          <button
+            id="icon-bat4"
+            onclick="toggleControls('bat4', event)"
+            class="ml-auto"
+          >
+            <img
+              src="assets/play_circle.svg"
+              alt="play"
+              class="w-7 h-7 drop-shadow-xl"
+            />
+          </button>
+        </div>
+      </div>
+
+      <!--bat 5-->
+      <div
+        class="relative rounded-2xl overflow-hidden shadow-lg group w-full max-w-md"
+      >
+        <!-- Bat image -->
+        <img
+          src="assets/bat_images/Pipistrellus pipistrella.png"
+          alt="Lasionycteris noctivagans"
+          class="w-full h-48 object-cover group-hover:scale-125 transition-transform"
+        />
+
+        <div class="absolute inset-0 bg-black/30"></div>
+
+        <!-- Info icon top-right -->
+        <button
+          onclick="openModal('bat5', event)"
+          class="absolute top-3 right-3 p-1 rounded-full hover:bg-white/60 transition-colors"
+        >
+          <img
+            src="assets/info_icon.svg"
+            alt="info"
+            class="h-7 w-7 drop-shadow-md"
+          />
+        </button>
+
+        <!-- Card title -->
+        <div class="absolute bottom-0 w-full flex items-end p-4">
+          <p class="text-white font-semibold">Pipistrellus pipistrella</p>
+          <!-- Play button -->
+          <button
+            id="icon-bat5"
+            onclick="toggleControls('bat5', event)"
+            class="ml-auto"
+          >
+            <img
+              src="assets/play_circle.svg"
+              alt="play"
+              class="w-7 h-7 drop-shadow-xl"
+            />
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <footer class="text-center font-semibold">&copy SMACON 2025</footer>
+
+    <!-- Modal structure -->
+    <div
+      id="infoModal"
+      class="fixed inset-0 bg-black/60 hidden items-center justify-center z-50"
+    >
+      <div class="bg-white rounded-xl p-6 max-w-md mx-auto relative">
+        <button
+          onclick="closeModal()"
+          class="absolute top-3 right-3 text-gray-500 text-2xl"
+        >
+          &times;
+        </button>
+        <h2 id="modalTitle" class="text-xl font-semibold mb-2"></h2>
+        <p id="modalText" class="text-gray-700"></p>
       </div>
     </div>
 
-    <div onclick="playOrStop('bat2')" class="relative rounded-2xl overflow-hidden shadow-lg cursor-pointer group">
-      <img src="assets/bat_images/Long-legged Myotis.png" alt="Long-legged Myotis" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" />
-      <div class="absolute inset-0 bg-black/40 flex items-end p-4">
-        <p class="text-white font-medium">Long-legged Myotis</p>
-        <span id="icon-bat2" class="ml-auto text-white text-2xl">
-          <img src="assets/play_circle.svg" alt="play" class="h-7 w-7">
-        </span>
-      </div>
-    </div>
+    <script>
+      let currentAudio = null;
+      let currentId = null;
 
-    <div onclick="playOrStop('bat3')" class="relative rounded-2xl overflow-hidden shadow-lg cursor-pointer group">
-      <img src="assets/bat_images/Nyctalus noctula.png" alt="Nyctalus noctula" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" />
-      <div class="absolute inset-0 bg-black/40 flex items-end p-4">
-        <p class="text-white font-medium">Nyctalus noctula</p>
-        <span id="icon-bat3" class="ml-auto text-white text-2xl">
-          <img src="assets/play_circle.svg" alt="play" class="h-7 w-7">
-        </span>
-      </div>
-    </div>
+      function toggleControls(id, e) {
+        if (e) e.stopPropagation();
+        const audioSrc = `assets/mp3/${id}.mp3`;
+        console.log("Attempting to play:", audioSrc);
+        const icon = document.getElementById("icon-" + id);
 
-    <div onclick="playOrStop('bat4')" class="relative rounded-2xl overflow-hidden shadow-lg cursor-pointer group">
-      <img src="assets/bat_images/Rhinolophus.png" alt="Rhinolophus" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" />
-      <div class="absolute inset-0 bg-black/40 flex items-end p-4">
-        <p class="text-white font-medium">Rhinolophus</p>
-        <span id="icon-bat4" class="ml-auto text-white text-2xl">
-          <img src="assets/play_circle.svg" alt="play" class="h-7 w-7">
-        </span>
-      </div>
-    </div>
+        if (currentId === id && currentAudio) {
+          currentAudio.pause();
+          currentAudio.currentTime = 0;
+          icon.innerHTML =
+            '<img src="assets/play_circle.svg" alt="play" class="h-7 w-7" />';
+          currentAudio = null;
+          currentId = null;
+          return;
+        }
 
-    <div onclick="playOrStop('bat5')" class="relative rounded-2xl overflow-hidden shadow-lg cursor-pointer group">
-      <img src="assets/bat_images/Pipistrellus pipistrella.png" alt="Pipistrellus pipistrella" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" />
-      <div class="absolute inset-0 bg-black/40 flex items-end p-4">
-        <p class="text-white font-medium">Pipistrellus pipistrella</p>
-        <span id="icon-bat5" class="ml-auto text-white text-2xl">
-          <img src="assets/play_circle.svg" alt="play" class="h-7 w-7">
-        </span>
-      </div>
-    </div>
+        if (currentAudio) {
+          const prevIcon = document.getElementById("icon-" + currentId);
+          prevIcon.innerHTML =
+            '<img src="assets/play_circle.svg" alt="play" class="h-7 w-7" />';
+          currentAudio.pause();
+          currentAudio.currentTime = 0;
+        }
 
-    <div onclick="playOrStop('bat6')" class="relative rounded-2xl overflow-hidden shadow-lg cursor-pointer group">
-      <img src="assets/bat_images/Eidolon helvum.png" alt="Eidolon helvum" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" />
-      <div class="absolute inset-0 bg-black/40 flex items-end p-4">
-        <p class="text-white font-medium">Eidolon helvum</p>
-        <span id="icon-bat6" class="ml-auto text-white text-2xl">
-          <img src="assets/play_circle.svg" alt="play" class="h-7 w-7">
-        </span>
-      </div>
-    </div>
+        currentAudio = new Audio(audioSrc);
+        currentId = id;
+        icon.innerHTML =
+          '<img src="assets/pause_circle.svg" alt="pause" class="h-7 w-7" />';
+        currentAudio.play();
 
-    <div onclick="playOrStop('bat7')" class="relative rounded-2xl overflow-hidden shadow-lg cursor-pointer group">
-      <img src="assets/bat_images/Hipposideros curtus.png" alt="Hipposideros curtus" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" />
-      <div class="absolute inset-0 bg-black/40 flex items-end p-4">
-        <p class="text-white font-medium">Hipposideros curtus</p>
-        <span id="icon-bat7" class="ml-auto text-white text-2xl">
-          <img src="assets/play_circle.svg" alt="play" class="h-7 w-7">
-        </span>
-      </div>
-    </div>
-
-    <div onclick="playOrStop('bat8')" class="relative rounded-2xl overflow-hidden shadow-lg cursor-pointer group">
-      <img src="assets/bat_images/Doryrhina cyclops.png" alt="Doryrhina cyclops" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" />
-      <div class="absolute inset-0 bg-black/40 flex items-end p-4">
-        <p class="text-white font-medium">Doryrhina cyclops</p>
-        <span id="icon-bat8" class="ml-auto text-white text-2xl">
-          <img src="assets/play_circle.svg" alt="play" class="h-7 w-7">
-        </span>
-      </div>
-    </div>
-
-    <div onclick="playOrStop('bat9')" class="relative rounded-2xl overflow-hidden shadow-lg cursor-pointer group">
-      <img src="assets/bat_images/Rhinolophus landeri.jpg" alt="Rhinolophus landeri" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" />
-      <div class="absolute inset-0 bg-black/40 flex items-end p-4">
-        <p class="text-white font-medium">Rhinolophus landeri</p>
-        <span id="icon-bat9" class="ml-auto text-white text-2xl">
-          <img src="assets/play_circle.svg" alt="play" class="h-7 w-7">
-        </span>
-      </div>
-    </div>
-
-    <div onclick="playOrStop('bat10')" class="relative rounded-2xl overflow-hidden shadow-lg cursor-pointer group">
-      <img src="assets/bat_images/Nycteris_thebaica.jpg" alt="Nycteris sp" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" />
-      <div class="absolute inset-0 bg-black/40 flex items-end p-4">
-        <p class="text-white font-medium">Nycteris sp</p>
-        <span id="icon-bat10" class="ml-auto text-white text-2xl">
-          <img src="assets/play_circle.svg" alt="play" class="h-7 w-7">
-        </span>
-      </div>
-    </div>
-  </main>
-
-  <!-- <footer class="text-center font-semibold">&copy SMACON 2025</footer> -->
-
-  <script>
-    let currentAudio = null;
-    let currentId = null;
-
-    function playOrStop(id) {
-      const audioSrc = `assets/mp3/${id}.mp3`;
-      console.log("Attempting to play:", audioSrc); 
-      const icon = document.getElementById("icon-" + id);
-
-      if (currentId === id && currentAudio) {
-        currentAudio.pause();
-        currentAudio.currentTime = 0;
-        icon.innerHTML = '<img src="assets/play_circle.svg" alt="play" class="h-7 w-7" />';
-        currentAudio = null;
-        currentId = null;
-        return;
+        currentAudio.onended = () => {
+          icon.innerHTML =
+            '<img src="assets/play_circle.svg" alt="play" class="h-7 w-7" />';
+          currentAudio = null;
+          currentId = null;
+        };
       }
 
-      if (currentAudio) {
-        const prevIcon = document.getElementById("icon-" + currentId);
-        prevIcon.innerHTML = '<img src="assets/play_circle.svg" alt="play" class="h-7 w-7" />';
-        currentAudio.pause();
-        currentAudio.currentTime = 0;
-      }
-
-      currentAudio = new Audio(audioSrc);
-      currentId = id;
-      icon.innerHTML = '<img src="assets/pause_circle.svg" alt="pause" class="h-7 w-7" />';
-      currentAudio.play();
-
-      currentAudio.onended = () => {
-        icon.innerHTML = '<img src="assets/play_circle.svg" alt="play" class="h-7 w-7" />';
-        currentAudio = null;
-        currentId = null;
+      // Modal content
+      const batInfo = {
+        bat1: {
+          title: "Lasionycteris noctivagans",
+          text: "Silver-haired bat with low-frequency echolocation calls.",
+        },
+        bat2: {
+          title: "Long-legged Myotis",
+          text: "Rapid high-frequency chirps while foraging.",
+        },
+        bat3: {
+          title: "Nyctalus noctula",
+          text: "Known for loud, low-pitched calls.",
+        },
+        bat4: {
+          title: "Rhinolophus",
+          text: "Uses constant frequency calls for precise hunting.",
+        },
+        bat5: {
+          title: "Pipistrellus pipistrella",
+          text: "Tiny bat with fast, high-pitched calls.",
+        },
       };
-    }
-  </script>
-</body>
+
+      function openModal(id, e) {
+        if (e) e.stopPropagation();
+        const info = batInfo[id];
+        if (!info) return;
+        document.getElementById("modalTitle").textContent = info.title;
+        document.getElementById("modalText").textContent = info.text;
+        const modal = document.getElementById("infoModal");
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+      }
+
+      function closeModal() {
+        const modal = document.getElementById("infoModal");
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+      }
+    </script>
+  </body>
 </html>
