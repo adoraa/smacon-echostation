@@ -9,10 +9,12 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 font-sans">
+  <!--
   <header class="bg-white shadow p-4 flex items-center justify-center space-x-3">
     <img src="assets/logo.svg" alt="Logo" class="h-8 w-auto" />
     <h1 class="text-xl font-semibold text-gray-800" style="color:#e97101"> SMACON's Echostation</h1>
   </header>
+  -->
 
   <main class="p-6 grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
     <!-- Sound buttons -->
@@ -65,9 +67,59 @@
         </span>
       </div>
     </div>
+
+    <div onclick="playOrStop('bat6')" class="relative rounded-2xl overflow-hidden shadow-lg cursor-pointer group">
+      <img src="assets/bat_images/Eidolon helvum.png" alt="Eidolon helvum" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" />
+      <div class="absolute inset-0 bg-black/40 flex items-end p-4">
+        <p class="text-white font-medium">Eidolon helvum</p>
+        <span id="icon-bat6" class="ml-auto text-white text-2xl">
+          <img src="assets/play_circle.svg" alt="play" class="h-7 w-7">
+        </span>
+      </div>
+    </div>
+
+    <div onclick="playOrStop('bat7')" class="relative rounded-2xl overflow-hidden shadow-lg cursor-pointer group">
+      <img src="assets/bat_images/Hipposideros curtus.png" alt="Hipposideros curtus" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" />
+      <div class="absolute inset-0 bg-black/40 flex items-end p-4">
+        <p class="text-white font-medium">Hipposideros curtus</p>
+        <span id="icon-bat7" class="ml-auto text-white text-2xl">
+          <img src="assets/play_circle.svg" alt="play" class="h-7 w-7">
+        </span>
+      </div>
+    </div>
+
+    <div onclick="playOrStop('bat8')" class="relative rounded-2xl overflow-hidden shadow-lg cursor-pointer group">
+      <img src="assets/bat_images/Doryrhina cyclops.png" alt="Doryrhina cyclops" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" />
+      <div class="absolute inset-0 bg-black/40 flex items-end p-4">
+        <p class="text-white font-medium">Doryrhina cyclops</p>
+        <span id="icon-bat8" class="ml-auto text-white text-2xl">
+          <img src="assets/play_circle.svg" alt="play" class="h-7 w-7">
+        </span>
+      </div>
+    </div>
+
+    <div onclick="playOrStop('bat9')" class="relative rounded-2xl overflow-hidden shadow-lg cursor-pointer group">
+      <img src="assets/bat_images/Rhinolophus landeri.jpg" alt="Rhinolophus landeri" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" />
+      <div class="absolute inset-0 bg-black/40 flex items-end p-4">
+        <p class="text-white font-medium">Rhinolophus landeri</p>
+        <span id="icon-bat9" class="ml-auto text-white text-2xl">
+          <img src="assets/play_circle.svg" alt="play" class="h-7 w-7">
+        </span>
+      </div>
+    </div>
+
+    <div onclick="playOrStop('bat10')" class="relative rounded-2xl overflow-hidden shadow-lg cursor-pointer group">
+      <img src="assets/bat_images/Nycteris_thebaica.jpg" alt="Nycteris sp" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" />
+      <div class="absolute inset-0 bg-black/40 flex items-end p-4">
+        <p class="text-white font-medium">Nycteris sp</p>
+        <span id="icon-bat10" class="ml-auto text-white text-2xl">
+          <img src="assets/play_circle.svg" alt="play" class="h-7 w-7">
+        </span>
+      </div>
+    </div>
   </main>
 
-  <footer class="text-center font-semibold">&copy SMACON 2025</footer>
+  <!-- <footer class="text-center font-semibold">&copy SMACON 2025</footer> -->
 
   <script>
     let currentAudio = null;
